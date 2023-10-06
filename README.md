@@ -9,7 +9,8 @@ $jsonData = '{
     "foo": "123.asd",
     "bar": "asd",
     "baz": "8 (707) 288-56-23",
-    "arrayField": {"phone1": "8 (707) 288-56-23 123.asd"}
+    "arrayField": ["8999654", "8 (707) 288-56-23 123.asd"],
+    "nestedStructure": {"field1": 324}
 }';
 $data = json_decode($jsonData, true);
 
@@ -23,7 +24,7 @@ $specification = new DataSpecification(
         'baz' => new DataSpecification(DataTypesList::PHONE, true),
         'arrayField' => new DataSpecification(DataTypesList::ARRAY, true, arrayItemsType: DataTypesList::PHONE),
         'nestedStructure' => new DataSpecification(DataTypesList::STRUCTURE, true, [
-            'field1' => new DataSpecification(DataTypesList::INTEGER, true),
+            'field1' => new DataSpecification(DataTypesList::STRING, true),
             'field2' => new DataSpecification(DataTypesList::INTEGER, true),
         ])
     ]
